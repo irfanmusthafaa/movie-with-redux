@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { DetailAction } from "../redux/actions/DetailAction";
 
 export const Detail = () => {
-  const [genres, setGenres] = useState([]);
   const [key, setKey] = useState([]);
 
   const details = useSelector((state) => state.detail);
@@ -21,14 +20,13 @@ export const Detail = () => {
 
   useEffect(() => {
     dispatch(DetailAction(id));
-    setGenres(details?.detail?.genres);
     setKey(details?.detail?.videos);
   }, [dispatch, id]);
 
-  const idKey = key?.map((value) => value.key);
-  const kunci = idKey?.shift();
+  const idKey = details?.detail?.videos?.map((value) => value.key);
+  const trailer = idKey?.shift();
 
-  const dataGenre = genres?.map((genre) => genre.name).join(", ");
+  const dataGenre = details?.detail?.genres?.map((genre) => genre.name).join(", ");
   const rating = Math.floor(details?.detail?.vote_average / 2);
 
   return (
@@ -52,7 +50,7 @@ export const Detail = () => {
             <div className="absolute inset-0 grid h-full w-full justify-items-start place-items-center px-10 bg-black/75">
               <div className="w-3/4  md:w-2/4 sm:scale-50 md:scale-100 ">
                 <Typography variant="h1" color="white" className="mb-4 text-3xl md:text-4xl lg:text-5xl">
-                  {details?.detail?.title}
+                  {details?.detail?.title}.
                 </Typography>
                 <div>
                   <p className="mb-6 italic text-white opacity-80 ">{dataGenre}</p>
@@ -67,7 +65,7 @@ export const Detail = () => {
                 </div>
                 <div className="flex justify-start gap-2">
                   <Link
-                    to={`https://www.youtube.com/watch?v=${kunci}`}
+                    to={`https://www.youtube.com/watch?v=${trailer}`}
                     target="_blank"
                     className="text-white text-sm font-bold pt-3 pb-2 px-7 bg-red-500 rounded-xl hover:opacity-75"
                   >

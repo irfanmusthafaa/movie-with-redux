@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRegisterUser } from "../../services/Auth/post-register";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import img from "../../assets/img/movie.jpg";
 
@@ -37,7 +37,7 @@ export const Register = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark"
+        theme: "dark",
       });
     }
     if (isSuccess) {
@@ -56,14 +56,14 @@ export const Register = () => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: "dark"
-        })
+          theme: "dark",
+        });
       } else {
         const Username = `${FirstName}` + `${LastName}`;
         registerUser({
           email: Email,
           name: Username,
-          password: Password
+          password: Password,
         });
       }
     } else {
@@ -75,7 +75,7 @@ export const Register = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: "dark"
+        theme: "dark",
       });
     }
   };

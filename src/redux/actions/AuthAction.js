@@ -11,9 +11,10 @@ export const AuthAction = (input) => (dispatch) => {
       dispatch(setIsLoggedIn(true));
 
       window.location.href = "/home";
+      toast.success("Login berhasil");
     })
     .catch((err) => {
-      console.log(err);
+      toast.error(err.response.data.message);
     });
 };
 
