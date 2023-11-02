@@ -7,22 +7,25 @@ import { Header } from "../assets/components/Header";
 import { NowPlayingMovie } from "../assets/components/NowPlayingMovie";
 import { Footer } from "../assets/components/Footer";
 import { useDataMoviesPopularQuery } from "../services/Movies/get-movies-popular";
+import { useDispatch, useSelector } from "react-redux";
+import { MovieAction } from "../redux/actions/MovieActions";
 
 export const Home = () => {
-  const [populars, setPopulars] = useState([]);
+  const data = useSelector((state) => state.movie);
 
-  const { data: movies } = useDataMoviesPopularQuery();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setPopulars(movies);
-  }, [movies]);
+    dispatch(MovieAction());
+  }, [dispatch]);
+
+  console.log(data, "Data");
 
   return (
     <div>
       <Nav color="transparent" />
-      <Header populars={populars} />
+      <Header data={data} />
       <PopularMovie />
-      {/* <NowPlayingMovie /> */}
       <Footer />
     </div>
   );

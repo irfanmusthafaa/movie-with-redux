@@ -6,13 +6,15 @@ import { useLoginUser } from "../../services/Auth/post-login";
 import "react-toastify/dist/ReactToastify.css";
 import GoogleLogin from "../../assets/components/GoogleLogin";
 import IconGoogle from "../../assets/icons/icons-google.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { AuthAction } from "../../redux/actions/AuthAction";
 
 export const Login = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  const { mutate: login, status, isSuccess, error } = useLoginUser();
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -31,29 +33,31 @@ export const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  useEffect(() => {
-    if (error) {
-      toast(error.response.data.message, {
-        position: toast.POSITION.TOP_CENTER,
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
-      });
-    }
-    if (isSuccess) {
-      navigate("/home");
-    }
-  }, [status]);
+  // useEffect(() => {
+  //   if (error) {
+  //     toast(error.response.data.message, {
+  //       position: toast.POSITION.TOP_CENTER,
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "dark",
+  //     });
+  //   }
+  //   if (isSuccess) {
+  //     navigate("/home");
+  //   }
+  // }, [status]);
 
-  const loginUser = () => {
-    login({
-      email: Email,
-      password: Password,
-    });
+  const handleLogin = () => {
+    dispatch(
+      AuthAction({
+        email: Email,
+        password: Password,
+      })
+    );
   };
 
   return (
@@ -92,7 +96,7 @@ export const Login = () => {
           </div>
           <button
             onClick={() => {
-              loginUser();
+              handleLogin();
             }}
             className="w-full rounded-md py-2 font-semibold bg-white text-black"
           >

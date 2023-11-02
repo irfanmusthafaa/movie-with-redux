@@ -6,7 +6,7 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
 
-export const Header = ({ populars }) => {
+export const Header = ({ data }) => {
   return (
     <Carousel
       prevArrow={() => false}
@@ -26,7 +26,7 @@ export const Header = ({ populars }) => {
         </div>
       )}
     >
-      {populars?.slice(8, 12).map((movie) => (
+      {data?.dataMovies?.slice(8, 12).map((movie) => (
         <div key={movie.id}>
           <div className="relative h-[full] w-full">
             <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} className="h-screen w-full object-cover" />

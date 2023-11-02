@@ -4,18 +4,18 @@ import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { Nav } from "../assets/components/Nav";
 import { Footer } from "../assets/components/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { MovieAction } from "../redux/actions/MovieActions";
 
 export const AllMovies = () => {
-  const [populars, setPopulars] = useState([]);
+  const data = useSelector((state) => state.movie);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [ID, setID] = useState("");
-
-  const { data: moviesPopular } = useDataMoviesPopularQuery();
 
   useEffect(() => {
-    setPopulars(moviesPopular);
-  }, [moviesPopular]);
+    dispatch(MovieAction());
+  }, [dispatch]);
 
   return (
     <>
@@ -26,7 +26,7 @@ export const AllMovies = () => {
         </Typography>
       </div>
       <div className="flex flex-wrap -mx-2  ">
-        {populars?.map((popular) => (
+        {data?.dataMovies?.map((popular) => (
           <div
             onClick={() => {
               navigate("/detail", {

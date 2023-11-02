@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDataMoviesPopularQuery } from "../../services/Movies/get-movies-popular";
 import { Typography } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { MovieAction } from "../../redux/actions/MovieActions";
 
 export const PopularMovie = () => {
-  const [populars, setPopulars] = useState([]);
+  const data = useSelector((state) => state.movie);
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { data: moviesPopular } = useDataMoviesPopularQuery();
-
   useEffect(() => {
-    setPopulars(moviesPopular);
-  }, [moviesPopular]);
+    dispatch(MovieAction());
+  }, [dispatch]);
 
   return (
     <>
@@ -26,7 +27,7 @@ export const PopularMovie = () => {
           </a>
         </div>
         <div className="flex flex-wrap  ">
-          {populars?.slice(1, 5).map((popular) => (
+          {data?.dataMovies?.slice(1, 5).map((popular) => (
             <div
               onClick={() => {
                 navigate("/detail", {
