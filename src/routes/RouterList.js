@@ -19,7 +19,7 @@ export const RouterList = () => {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/all-popular" element={<AllMovies />}></Route>
           <Route path="/all-now-playing" element={<AllNowPlaying />}></Route>
-          <Route path="/detail" element={<Detail />}></Route>
+          <Route path="/detail/:id" element={<Detail />}></Route>
           <Route path="/search" element={<Search />}></Route>
         </Routes>
       </BrowserRouter>

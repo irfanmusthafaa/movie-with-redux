@@ -30,7 +30,7 @@ export const PopularMovie = () => {
           {data?.dataMovies?.slice(1, 5).map((popular) => (
             <div
               onClick={() => {
-                navigate("/detail", {
+                navigate(`/detail/${popular.id}`, {
                   state: {
                     idMovie: popular.id,
                   },
