@@ -2,31 +2,27 @@ import React, { useEffect, useState } from "react";
 import { Nav } from "../assets/components/Nav";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Typography } from "@material-tailwind/react";
-import { useDataMoviesSearchQuery } from "../services/Movies/get-movies-search";
+import { useDispatch, useSelector } from "react-redux";
+import { SearchAction } from "../redux/actions/SearchAction";
 
 export const Search = () => {
   const location = useLocation();
   const { query } = location.state ? location.state : "";
-  const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState("");
 
-  const { data: dataSearch } = useDataMoviesSearchQuery({
-    page: 1,
-    query: query,
-  });
+  const search = useSelector((state) => state.search);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    setMovies(dataSearch);
-    setSearch(query);
-  }, [dataSearch]);
+    dispatch(SearchAction(query));
+  }, [dispatch, query]);
 
   const InputValue = () => {
     if (search !== "") {
       return (
         <Typography color="black" variant="h3" className="container mx-auto px-4 mt-[7rem] ">
-          Search Result "{search}"
+          Search Result "{query}"
         </Typography>
       );
     } else {
@@ -43,10 +39,10 @@ export const Search = () => {
       <Nav variant="gradient" />
       {<InputValue />}
       <div className=" flex flex-wrap mx-2 ">
-        {movies?.map((popular) => (
+        {search?.searchResult?.map((popular) => (
           <div
             onClick={() => {
-              navigate("/detail", {
+              navigate(`/detail/${popular.id}`, {
                 state: {
                   idMovie: popular.id,
                 },

@@ -1,6 +1,7 @@
 import { LoginUser } from "../../services/Auth/post-login";
 import { CookiesKey, CookiesStorage } from "../../utils/cookies";
 import { setIsLoggedIn, setToken } from "../reducers/auth/AuthReducer";
+import { toast } from "react-toastify";
 
 export const AuthAction = (input) => (dispatch) => {
   LoginUser(input)
@@ -18,6 +19,7 @@ export const AuthAction = (input) => (dispatch) => {
 
 export const LogOut = () => (dispatch) => {
   dispatch(setToken(undefined));
+  dispatch(setIsLoggedIn(false));
   CookiesStorage.remove(CookiesKey.AuthToken);
   window.location.href = "/";
 };

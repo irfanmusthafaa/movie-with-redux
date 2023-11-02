@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Button, IconButton, Collapse } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { CookiesKey, CookiesStorage } from "../../utils/cookies";
+import { useDispatch } from "react-redux";
+import { LogOut } from "../../redux/actions/AuthAction";
 
 export const Nav = ({ color, variant }) => {
   const [openNav, setOpenNav] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSearch = (e) => {
     e.preventDefault();
@@ -16,11 +19,6 @@ export const Nav = ({ color, variant }) => {
   useEffect(() => {
     window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
-
-  const handleLogout = () => {
-    CookiesStorage.remove(CookiesKey.AuthToken);
-    window.location.href = "/";
-  };
 
   return (
     <Navbar
@@ -56,7 +54,14 @@ export const Nav = ({ color, variant }) => {
           </form>
         </div>
         <div className="">
-          <Button onClick={handleLogout} variant="gradient" color="red" className="px-7 hidden lg:inline-block hover:opacity-75">
+          <Button
+            onClick={() => {
+              dispatch(LogOut());
+            }}
+            variant="gradient"
+            color="red"
+            className="px-7 hidden lg:inline-block hover:opacity-75"
+          >
             <span>Logout</span>
           </Button>
         </div>
@@ -100,7 +105,16 @@ export const Nav = ({ color, variant }) => {
               </label>
             </form>
           </div>
-          <Button onClick={handleLogout} variant="gradient" color="red" size="sm" fullWidth={true} className=" mt-3 hover:opacity-75">
+          <Button
+            onClick={() => {
+              dispatch(LogOut());
+            }}
+            variant="gradient"
+            color="red"
+            size="sm"
+            fullWidth={true}
+            className=" mt-3 hover:opacity-75"
+          >
             <span>Logout</span>
           </Button>
         </div>

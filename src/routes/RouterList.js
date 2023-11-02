@@ -4,10 +4,9 @@ import { Home } from "../pages/Home";
 import { Detail } from "../pages/Detail";
 import { Search } from "../pages/Search";
 import { AllMovies } from "../pages/AllMovies";
-import { AllNowPlaying } from "../pages/AllNowPlaying";
 import { Register } from "../pages/Auth/Register";
 import { Login } from "../pages/Auth/Login";
-import { LoginPage } from "../pages/Auth/LoginPage";
+import { Protected } from "../assets/components/Protected";
 
 export const RouterList = () => {
   return (
@@ -16,11 +15,38 @@ export const RouterList = () => {
         <Routes>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/" element={<Login />}></Route>
-          <Route path="/home" element={<Home />}></Route>
-          <Route path="/all-popular" element={<AllMovies />}></Route>
-          <Route path="/all-now-playing" element={<AllNowPlaying />}></Route>
-          <Route path="/detail/:id" element={<Detail />}></Route>
-          <Route path="/search" element={<Search />}></Route>
+          <Route
+            path="/home"
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          ></Route>
+          <Route
+            path="/all-popular"
+            element={
+              <Protected>
+                <AllMovies />
+              </Protected>
+            }
+          ></Route>
+          <Route
+            path="/detail/:id"
+            element={
+              <Protected>
+                <Detail />
+              </Protected>
+            }
+          ></Route>
+          <Route
+            path="/search"
+            element={
+              <Protected>
+                <Search />
+              </Protected>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>

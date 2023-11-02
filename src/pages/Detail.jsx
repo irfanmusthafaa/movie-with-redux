@@ -15,10 +15,9 @@ export const Detail = () => {
   const [key, setKey] = useState([]);
 
   const details = useSelector((state) => state.detail);
-  console.log(details, "datadetail");
+
   const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id, "params");
 
   useEffect(() => {
     dispatch(DetailAction(id));
