@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { fetchDataMoviesDetail } from "../../services/Movies/get-movies-detail";
 import { setDetail } from "../reducers/movie/DetailReducer";
 

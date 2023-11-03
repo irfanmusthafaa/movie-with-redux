@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { fetchDataMovies } from "../../services/Movies/get-movies-popular";
 import { setDataMovies } from "../reducers/movie/MovieReducer";
 

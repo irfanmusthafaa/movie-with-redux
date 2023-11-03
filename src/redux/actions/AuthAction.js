@@ -1,3 +1,4 @@
+import { LoginGoogle } from "../../services/Auth/auth-google";
 import { LoginUser } from "../../services/Auth/post-login";
 import { CookiesKey, CookiesStorage } from "../../utils/cookies";
 import { setIsLoggedIn, setToken } from "../reducers/auth/AuthReducer";
@@ -14,7 +15,7 @@ export const AuthAction = (input) => (dispatch) => {
       toast.success("Login berhasil");
     })
     .catch((err) => {
-      toast.error(err.response.data.message);
+      console.log(err);
     });
 };
 

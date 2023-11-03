@@ -4,7 +4,6 @@ import { CookiesKey, CookiesStorage } from "../../../utils/cookies";
 const initialState = {
   token: CookiesStorage.get(CookiesKey.AuthToken) || undefined,
   isLogin: !!CookiesStorage.get(CookiesKey.AuthToken) || false,
-  user: "",
 };
 
 const AuthReducer = createSlice({
@@ -17,12 +16,9 @@ const AuthReducer = createSlice({
     setIsLoggedIn: (state, action) => {
       state.isLogin = action.payload;
     },
-    setUser: (state, action) => {
-      state.user = action.payload;
-    },
   },
 });
 
-export const { setToken, setIsLoggedIn, setUser } = AuthReducer.actions;
+export const { setToken, setIsLoggedIn } = AuthReducer.actions;
 
 export default AuthReducer.reducer;
