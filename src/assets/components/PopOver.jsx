@@ -26,13 +26,12 @@ export const PopOver = ({ className }) => {
       <PopoverContent className="w-72 z-20">
         <div className="mb-4 flex items-center gap-4 border-b  border-blue-gray-50 pb-4">
           <Avatar src={iconUser} alt="tania andrew" />
-          {/* <FontAwesomeIcon icon={faUser} /> */}
           <div>
             <Typography variant="h6" color="blue-gray">
-              {data?.getMe?.name}
+              <span>{data?.getMe?.name}</span>
             </Typography>
             <Typography variant="small" color="gray" className="font-medium text-blue-gray-500">
-              {data?.getMe?.email}
+              <span> {data?.getMe?.email}</span>
             </Typography>
           </div>
         </div>
