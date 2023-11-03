@@ -118,10 +118,10 @@ export const Nav = ({ color, variant }) => {
             </form>
           </div>
           <div className="mt-3 w-[full]">
-            <PopOver fullWidth={true} className={`w-[full]`} />
+            <PopOver fullWidth={true} className="w-[30rem]" />
           </div>
-          <PopOver fullWidth={true} className={`w-[full]`} />
-          <Button
+
+          {/* <Button
             onClick={() => {
               dispatch(LogOut());
             }}
@@ -130,7 +130,7 @@ export const Nav = ({ color, variant }) => {
             className="bg-[#BE123C] mt-3 hover:opacity-75"
           >
             <span>Logout</span>
-          </Button>
+          </Button> */}
         </div>
       </Collapse>
     </Navbar>

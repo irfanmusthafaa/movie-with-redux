@@ -6,6 +6,7 @@ import { GetMeAction } from "../../redux/actions/GetMeAction";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LogOut } from "../../redux/actions/AuthAction";
+import iconUser from "../icons/user.png";
 
 export const PopOver = ({ className }) => {
   const data = useSelector((state) => state.getMe);
@@ -18,15 +19,15 @@ export const PopOver = ({ className }) => {
   }, [dispatch]);
 
   return (
-    <Popover placement="bottom-end">
+    <Popover className={className} placement="bottom-end">
       <PopoverHandler>
-        <Button className="px-7 bg-[#BE123C] lg:inline-block hover:opacity-75 flex justify-center items-center gap-3">
+        <button className="w-full rounded-md px-6 py-4 font-semibold lg:inline-block bg-[#BE123C] hover:bg-pink-500 text-white flex justify-center items-center gap-3">
           <FontAwesomeIcon icon={faUser} /> Account
-        </Button>
+        </button>
       </PopoverHandler>
-      <PopoverContent className="w-72">
+      <PopoverContent className="w-72 z-20">
         <div className="mb-4 flex items-center gap-4 border-b  border-blue-gray-50 pb-4">
-          {/* <Avatar src="/img/team-4.jpg" alt="tania andrew" /> */}
+          <Avatar src={iconUser} alt="tania andrew" />
           {/* <FontAwesomeIcon icon={faUser} /> */}
           <div>
             <Typography variant="h6" color="blue-gray">
