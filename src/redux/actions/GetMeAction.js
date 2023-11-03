@@ -6,7 +6,5 @@ export const GetMeAction = () => (dispatch) => {
     .then((result) => {
       dispatch(setGetMe(result));
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };

@@ -1,8 +1,6 @@
 import React from "react";
 
-import { Carousel, Typography, Button } from "@material-tailwind/react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { Carousel, Typography } from "@material-tailwind/react";
 import tmdbImage from "../icons/tmdb.png";
 import iconPlay from "../icons/Play.png";
 import { Link } from "react-router-dom";

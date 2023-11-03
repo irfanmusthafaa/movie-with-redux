@@ -7,7 +7,5 @@ export const DetailAction = (id) => (dispatch) => {
     .then((result) => {
       dispatch(setDetail(result.data));
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };

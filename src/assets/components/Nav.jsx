@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Navbar, Button, IconButton, Collapse } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { LogOut } from "../../redux/actions/AuthAction";
 import logo from "../img/logo.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -20,7 +19,6 @@ export const Nav = ({ color, variant }) => {
     dispatch(GetMeAction());
   }, [dispatch]);
 
-  console.log(data?.getMe?.name, "namaaaa");
   const onSearch = (e) => {
     e.preventDefault();
     const query = e.target.elements.search.value;

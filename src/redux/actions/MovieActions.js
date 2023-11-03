@@ -7,7 +7,5 @@ export const MovieAction = () => (dispatch) => {
     .then((result) => {
       dispatch(setDataMovies(result));
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Popover, PopoverHandler, PopoverContent, Avatar, Button, Typography, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { GetMeAction } from "../../redux/actions/GetMeAction";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +11,6 @@ export const PopOver = ({ className }) => {
   const data = useSelector((state) => state.getMe);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(GetMeAction());
@@ -47,18 +45,6 @@ export const PopOver = ({ className }) => {
           >
             <span>Logout</span>
           </Button>
-          {/* <a href="/" className="text-initial font-medium text-blue-gray-500">
-            <ListItem>
-              <Button
-                onClick={() => {
-                  dispatch(LogOut());
-                }}
-                className="px-7 bg-[#BE123C] hidden lg:inline-block hover:opacity-75"
-              >
-                <span>Logout</span>
-              </Button>
-            </ListItem>
-          </a> */}
         </List>
       </PopoverContent>
     </Popover>

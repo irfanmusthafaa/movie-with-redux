@@ -8,7 +8,5 @@ export const SearchAction = (query) => (dispatch) => {
     .then((result) => {
       dispatch(setSearchResult(result));
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => {});
 };

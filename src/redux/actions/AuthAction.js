@@ -15,7 +15,7 @@ export const AuthAction = (input) => (dispatch) => {
       toast.success("Login berhasil");
     })
     .catch((err) => {
-      console.log(err);
+      toast.warn(err.response.data.message);
     });
 };
 
