@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Navbar, Button, IconButton, Collapse } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { CookiesKey, CookiesStorage } from "../../utils/cookies";
 import { useDispatch } from "react-redux";
 import { LogOut } from "../../redux/actions/AuthAction";
+import logo from "../img/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export const Nav = ({ color, variant }) => {
   const [openNav, setOpenNav] = useState(false);
@@ -28,28 +30,32 @@ export const Nav = ({ color, variant }) => {
       className="absolute z-10 top-0 left-0 right-0 py-2 px-4 lg:px-8 lg:py-4 bg-transparent border-none"
     >
       {/* <Navbar fullWidth="true" className=" bg-transparent absolute top-0 left-0 py-2 px-4 lg:px-8 lg:py-4 border-none"> */}
-      <div className="container mx-auto flex items-center justify-between">
-        <a href="/home" className="font-bold text-3xl text-red-500 cursor-pointer">
-          Movielist
-        </a>
+      <div className=" mx-auto py-2 sm:px-4 flex items-center justify-between">
+        <div>
+          <a href="/home" className="flex items-center justify-center gap-2 font-extrabold text-3xl text-[#BE123C] hover:scale-105 cursor-pointer">
+            <img src={logo} alt="logo" />
+            MovieBox
+          </a>
+        </div>
+
         <div className="hidden lg:block">
           {/* <Input className="w-[25rem]" color="white" label="Search movies ..." icon={<img src={IconSearch} alt="icon search" />} /> */}
-          <form className="relative flex h-10 w-[full] min-w-[200px] max-w-[24rem]" onSubmit={onSearch}>
+          <form className="relative flex h-10 w-[full] min-w-[200px] max-w-[30rem]" onSubmit={onSearch}>
             <input
               type="search"
-              className=" peer h-full w-full rounded-[7px] border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 pr-20 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+              className=" peer h-full w-[30rem] rounded-[7px] border  border-white border-t-transparent bg-transparent text-blue-gray-700 px-3 py-2.5 pr-20 font-sans text-sm font-normal outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
               placeholder=" "
               name="search"
             />
             <button
-              className="!absolute right-1 top-1 z-10 select-none rounded bg-red-500 py-2 px-2.5 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none peer-placeholder-shown:pointer-events-none peer-placeholder-shown:bg-red-500 peer-placeholder-shown:opacity-50 peer-placeholder-shown:shadow-none"
+              className="!absolute  right-1 top-1 z-10 select-none rounded bg-transparent py-2 px-2.5 text-center align-middle font-sans text-xs font-bold uppercase text-gray-700  transition-all  "
               type="submit"
               data-ripple-light="true"
             >
-              Search
+              <FontAwesomeIcon icon={faSearch} />
             </button>
-            <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-              Search Movie....
+            <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-white transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+              What do you want to watch ?
             </label>
           </form>
         </div>
@@ -58,9 +64,7 @@ export const Nav = ({ color, variant }) => {
             onClick={() => {
               dispatch(LogOut());
             }}
-            variant="gradient"
-            color="red"
-            className="px-7 hidden lg:inline-block hover:opacity-75"
+            className="px-7 bg-[#BE123C] hidden lg:inline-block hover:opacity-75"
           >
             <span>Logout</span>
           </Button>
@@ -84,7 +88,7 @@ export const Nav = ({ color, variant }) => {
         </IconButton>
       </div>
       <Collapse open={openNav}>
-        <div className="container mx-auto ">
+        <div className="container mx-auto   ">
           <div className="mt-3 w-full">
             <form className="relative flex h-10 w-[full] " onSubmit={onSearch}>
               <input
@@ -109,11 +113,9 @@ export const Nav = ({ color, variant }) => {
             onClick={() => {
               dispatch(LogOut());
             }}
-            variant="gradient"
-            color="red"
             size="sm"
             fullWidth={true}
-            className=" mt-3 hover:opacity-75"
+            className="bg-[#BE123C] mt-3 hover:opacity-75"
           >
             <span>Logout</span>
           </Button>

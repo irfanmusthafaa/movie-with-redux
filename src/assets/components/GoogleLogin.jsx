@@ -43,8 +43,7 @@ function GoogleLogin({ buttonText }) {
 
   return (
     <button
-      color="white"
-      className="w-full flex justify-center items-center rounded-full py-2 font-semibold bg-white text-black"
+      className="w-full flex justify-center items-center rounded-md py-3 font-semibold bg-indigo-100 text-black transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline"
       onClick={() => loginWithGoogle()}
     >
       <img src={IconGoogle} width={25} /> {buttonText}

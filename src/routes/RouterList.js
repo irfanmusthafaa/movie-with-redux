@@ -7,6 +7,7 @@ import { AllMovies } from "../pages/AllMovies";
 import { Register } from "../pages/Auth/Register";
 import { Login } from "../pages/Auth/Login";
 import { Protected } from "../assets/components/Protected";
+import { LoginPage } from "../pages/Auth/LoginPage";
 
 export const RouterList = () => {
   return (
@@ -14,6 +15,7 @@ export const RouterList = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/loginExample" element={<LoginPage />}></Route>
           <Route path="/" element={<Login />}></Route>
           <Route
             path="/home"

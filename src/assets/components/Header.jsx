@@ -3,7 +3,8 @@ import React from "react";
 import { Carousel, Typography, Button } from "@material-tailwind/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
-
+import tmdbImage from "../icons/tmdb.png";
+import iconPlay from "../icons/Play.png";
 import { Link } from "react-router-dom";
 
 export const Header = ({ data }) => {
@@ -30,20 +31,27 @@ export const Header = ({ data }) => {
         <div key={movie.id}>
           <div className="relative h-[full] w-full">
             <img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} className="h-screen w-full object-cover" />
-            <div className="absolute inset-0 grid h-full w-full justify-items-start place-items-center px-10 bg-black/75">
+            <div
+              data-aos="flip-right"
+              className="absolute inset-0 grid h-full w-full justify-items-start place-items-center sm:px-10 lg:px-14 bg-black/75"
+            >
               <div className="w-3/4  md:w-2/4  ">
                 <Typography variant="h1" color="white" className="mb-4 text-3xl md:text-4xl lg:text-5xl">
                   {movie.title}
                 </Typography>
+                <div className="flex  items-center gap-2 mb-4">
+                  <img src={tmdbImage} width={35} height={17} alt="rating" />
+                  <p className=" text-white opacity-80 line-clamp-3">{`${movie.vote_average.toFixed(1)} / 10`}</p>
+                </div>
 
                 <p className="mb-4 text-white opacity-80 line-clamp-3">{movie.overview}</p>
                 <div className="flex justify-start gap-2">
                   <Link
                     to={`https://www.youtube.com/watch?v=${movie.videos?.map((value) => value.key).shift()}`}
                     target="_blank"
-                    className="text-white text-sm font-bold pt-3 pb-2 px-7 bg-red-500 rounded-xl hover:opacity-75"
+                    className="flex justify-start gap-2 text-white text-sm font-bold py-4 px-7  bg-[#BE123C] rounded-xl hover:opacity-75"
                   >
-                    <FontAwesomeIcon icon={faClock} /> WATCH TRAILER
+                    <img src={iconPlay} alt="icon play" /> WATCH TRAILER
                   </Link>
                 </div>
               </div>

@@ -9,6 +9,8 @@ import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { useDataMoviesDetailQuery } from "../services/Movies/get-movies-detail";
 import { useDispatch, useSelector } from "react-redux";
 import { DetailAction } from "../redux/actions/DetailAction";
+import tmdbImage from "../assets/icons/tmdb.png";
+import iconPlay from "../assets/icons/Play.png";
 
 export const Detail = () => {
   const [key, setKey] = useState([]);
@@ -57,19 +59,23 @@ export const Detail = () => {
                 </div>
 
                 <p className="mb-4 text-white opacity-80 ">{details?.detail?.overview}</p>
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex  items-center gap-2 mb-4">
+                  <img src={tmdbImage} width={35} height={17} alt="rating" />
+                  <p className=" text-white opacity-80 line-clamp-3">{`${details?.detail?.vote_average?.toFixed(1)} / 10`}</p>
+                </div>
+                {/* <div className="flex items-center gap-2 mb-4">
                   <RatingStar rating={details?.detail?.vote_average} />
                   <Typography color="white" className="font-medium opacity-80">
                     {rating}.0 Rated
                   </Typography>
-                </div>
+                </div> */}
                 <div className="flex justify-start gap-2">
                   <Link
                     to={`https://www.youtube.com/watch?v=${trailer}`}
                     target="_blank"
-                    className="text-white text-sm font-bold pt-3 pb-2 px-7 bg-red-500 rounded-xl hover:opacity-75"
+                    className="flex justify-start gap-2 text-white text-sm font-bold py-4 px-7  bg-[#BE123C] rounded-xl hover:opacity-75"
                   >
-                    <FontAwesomeIcon icon={faClock} /> WATCH TRAILER
+                    <img src={iconPlay} alt="icon play" /> WATCH TRAILER
                   </Link>
                 </div>
               </div>
